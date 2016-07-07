@@ -1,0 +1,90 @@
+{
+	"fields": [
+		{
+			"size": "field-m",
+			"fields": [
+				{
+					"class": "col-sm-6 body",
+					"children": [
+						{
+							"class": "half",
+							"children": [
+								{
+									"image": "",
+									"caption": "henry is boss",
+									"header": "",
+									"color": "#eee",
+									"link": "",
+									"class": "body"
+								}
+							]
+						},
+						{
+							"class": "half",
+							"children": [
+								{
+									"image": "",
+									"caption": "henry is boss",
+									"header": "",
+									"color": "#eee",
+									"link": "",
+									"class": "mid body"
+								},
+								{
+									"image": "",
+									"caption": "henry is boss",
+									"header": "",
+									"color": "#eee",
+									"link": "",
+									"class": "mid body"
+								}
+							]
+						}
+					]
+				},
+				{
+					"class": "col-sm-3 double",
+					"children": [
+						{
+							"image": "",
+							"caption": "henry is boss",
+							"header": "",
+							"color": "#eee",
+							"link": "",
+							"class": "small body"
+						},
+						{
+							"image": "",
+							"caption": "",
+							"header": "emil is not",
+							"color": "#eee",
+							"link": "",
+							"class": "big body"
+						}
+					]
+				},
+				{
+					"class": "col-sm-3 double",
+					"children": [
+						{
+							"image": "",
+							"caption": "",
+							"header": "",
+							"color": "#eee",
+							"link": "",
+							"class": "big body"
+						},
+						{
+							"image": "",
+							"caption": "",
+							"header": "",
+							"color": "#eee",
+							"link": "",
+							"class": "small body"
+						}
+					]
+				}
+			]
+		}
+	]
+}

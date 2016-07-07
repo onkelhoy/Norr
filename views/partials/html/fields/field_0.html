@@ -1,0 +1,246 @@
+<meta charset="UTF-8">
+<style>
+	
+	header {
+		position: relative;
+	}
+	
+	#custom-search-input{
+	    padding: 3px;
+	    border: solid 1px #E4E4E4;
+	    border-radius: 6px;
+	    background-color: #fff;
+	}
+
+	#custom-search-input input{
+	    border: 0;
+	    box-shadow: none;
+	}
+
+	#custom-search-input button{
+	    margin: 2px 0 0 0;
+	    background: none;
+	    box-shadow: none;
+	    border: 0;
+	    color: #666666;
+	    padding: 0 8px 0 10px;
+	    border-left: solid 1px #ccc;
+	}
+
+	#custom-search-input button:hover{
+	    border: 0;
+	    box-shadow: none;
+	    border-left: solid 1px #ccc;
+	}
+
+
+	#custom-search-input button:active{
+		color: blue;
+	}
+
+	#custom-search-input button:focus{
+		outline: none;
+	}
+
+	#custom-search-input .glyphicon-search{
+	    font-size: 23px;
+	}
+
+	#logo {
+		font-family: 'Amatic SC', cursive;
+		font-size: 64pt;
+
+		text-align: center;
+	}
+
+	#logo > a {
+		text-decoration: none;
+		color: #444;
+	}
+	#logo > a:hover {
+		text-decoration: none;
+	}
+
+	header > section {
+		padding: 5px;
+		position: absolute;
+		right: 0;
+		width: 20%;
+		min-width: 200px;
+		max-width: 250px;
+	}
+	header > section > div > div {
+		width: 100%;
+		display: none;
+	}
+	header > section > div > section {
+
+	}
+
+	header > section > div > p {
+		width: 50%;
+		float: left;
+		text-align: center;
+		color: #555;
+		/*margin: 0 5px;*/
+
+		cursor: pointer;
+		-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none;   /* Chrome/Safari/Opera */
+		-khtml-user-select: none;    /* Konqueror */
+		-moz-user-select: none;      /* Firefox */
+		-ms-user-select: none;       /* Internet Explorer/Edge */
+		user-select: none;           /* Non-prefixed version, currently
+		                                  not supported by any browser */
+	}
+	header > section > div > p:hover {
+		color: #111;
+	}
+	header > section > div > p:active {
+		color: #000;
+    	font-weight: bold;
+	}
+	
+	nav {
+		text-align: center;
+		margin: 15px;
+	}
+	nav > a {
+		text-decoration: none;
+		color: black;
+		margin: 0 10px;
+
+		font-size: 14pt;
+	}
+	nav > a:hover {
+		color: black;
+	}
+
+	header > section > div + div > div > div > div {
+		margin-bottom: 6px;
+	}
+	.register > button {
+		width: 100%;
+	}
+	.register {
+		display: none;
+	}
+
+</style>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+
+
+
+<script>
+	$(document).ready(function() {
+		var elm = $('header > section > div + div');
+		var clicked = false;
+
+		elm.children('p').hover(function(){
+			elm.children('div').slideDown('fast');
+		});
+
+		elm.children('p').click(function() { 
+			clicked = clicked == false;
+			if(clicked) $('#loginpin').show();
+			else $('#loginpin').hide();
+		});
+
+		elm.mouseleave(function() {
+			if(!clicked)
+				elm.children('div').slideUp('fast'); 
+		});
+
+		$('#changeLogin').click(function(){
+			if($(this).text() == 'Ej medlem?') {
+				$(this).text('Logga in');
+				$('.login').hide();
+				$('.register').show();
+
+				$(this).parent().parent().children('p').children('span').text('REGISTRERA');
+			} else {
+				$(this).text('Ej medlem?');
+				$('.register').hide();
+				$('.login').show();
+
+				$(this).parent().parent().children('p').children('span').text('LOGGA IN');
+			}
+		});
+
+	});
+</script>
+
+<header class="container-fluid">
+	<section>
+		<div><p>VARUKORG <span id="varukorgCount">0</span></p></div>
+		<div>
+			<p><span>LOGGA IN</span> <i id="loginpin" style="display: none;" class="fa fa-thumb-tack"></i></p>
+			
+			<div>
+				<div class="login">
+					<div class="input-group">
+	      				<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+						<input type="email" class="form-control" id="mail" placeholder="Enter Email">
+					</div>
+					<div class="input-group">
+	      				<span class="input-group-addon"><i class="fa fa-key"></i></span>
+						<input type="password" class="form-control" id="password" placeholder="Enter Password">
+	      				<span class="input-group-btn">
+	      					<button class="btn btn-success" type="button">login</button>
+	      				</span>
+					</div>
+				</div>
+				<div class="register">
+					<div class="input-group">
+	      				<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+						<input type="email" class="form-control" id="reg_mail" placeholder="Enter Email">
+					</div>
+					<div class="input-group">
+	      				<span class="input-group-addon"><i class="fa fa-key"></i></span>
+						<input type="password" class="form-control" id="req_password" placeholder="Enter Password">
+					</div>
+					<div class="input-group">
+	      				<span class="input-group-addon"><i class="fa fa-repeat"></i></span>
+						<input type="password" class="form-control" id="req_password" placeholder="Repeat Password">
+					</div>
+	      			<button class="btn btn-info" type="button">register</button>
+				</div>
+				
+				
+				<a href="javascript:void(0)" id="changeLogin">Ej medlem?</a>
+			</div>
+		</div>
+	</section>
+
+	<h1 id="logo"><a href="#">NORR</a></h1>
+
+	<nav>
+		<a href="#">T-SHIRT</a>
+		<a href="#">HOODIE</a>
+		<a href="#">BYXOR</a>
+		<a href="#">KEPS</a>
+	</nav>
+	
+	<div class="col-sm-4 col-sm-offset-4">
+		<div id="custom-search-input">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="SÖK" />
+				<span class="input-group-btn">
+					<button class="btn btn-info" type="button" onclick="search()">
+	                	<i class="glyphicon glyphicon-search"></i>
+	                </button>
+	            </span>
+	        </div>
+    	</div>
+    </div>
+	<br><br>
+	<hr>
+</header>
+
+<section id="varukorg">
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus accusantium culpa temporibus obcaecati minus exercitationem in placeat nesciunt voluptatum, id ex nam tempora. Laboriosam architecto consequatur, odit in ipsa tempore!</p>
+</section>

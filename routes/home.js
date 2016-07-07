@@ -1,16 +1,68 @@
 (function(){
 	"user strict";
     var express = require('express');
-    var layout = require('./content/layout.js');
+    var jsonfile = require('jsonfile');
+    var filter = require('./helpers/filter');
+    var sql = require('./helpers/sql');
+
     var routes = express.Router();
 
+    routes.use('/', express.static('public'));
     routes.get('/', function(req, res){
-    	console.log(layout);
-		res.render('home', {
-			layout: layout
 
-		});
+
+        jsonfile.readFile(__dirname + '/content/layout.json', function(err, obj){
+            if(!err){
+                sql.renderCategories(res, {
+                    layout: obj,
+                    type: 'home',
+                    title: 'Norr'
+                });
+            }
+            else {
+                console.log(err);
+                
+                res.render('clean', {
+                    type: 'error',
+                    title: 'Error 601', //sql error
+                    msg: 'Database error, loading products'
+                });
+            }
+        });
+
 	});
+
+    routes.get('/:cat', function(req, res){
+        var category = req.params.cat;
+        var sess = req.session;
+
+        if(filter.text(category))
+            var command = "SELECT * FROM `product` WHERE `category` = '"+category+"'";
+            sql.query(command, function(err, rows){
+                if(err) {
+                    console.log(err);
+                    
+                    res.render('clean', {
+                        type: 'error',
+                        title: 'Error 603',
+                        msg: 'Error loading layout'
+                    });
+                }
+                else {
+                    sql.renderCategories(res, {
+                        type: 'products',
+                        title: 'Norr',
+                        products: rows,
+                        heartList: sess.heartList
+                    });
+                }
+            });
+        
+    });
+
+    routes.post('/heart/:id', function(req, res){
+        
+    });
     
     module.exports = routes;
 }());

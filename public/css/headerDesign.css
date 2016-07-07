@@ -1,0 +1,120 @@
+header {
+	position: relative;
+}
+	
+#custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:active{
+	color: blue;
+}
+
+#custom-search-input button:focus{
+	outline: none;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
+}
+
+#logo {
+	font-family: 'Amatic SC', cursive;
+	font-size: 64pt;
+	text-align: center;
+}
+
+#logo > a {
+	text-decoration: none;
+	color: #444;
+}
+#logo > a:hover {
+	text-decoration: none;
+}
+
+header > section {
+	padding: 5px;
+	position: absolute;
+	right: 0;
+	width: 20%;
+	min-width: 200px;
+	max-width: 250px;
+}
+header > section > div > div {
+	width: 100%;
+	display: none;
+}
+header > section > div > section {
+
+}
+
+header > section > div > p {
+	width: 50%;
+	float: left;
+	text-align: center;
+	color: #555;
+	/*margin: 0 5px;*/
+
+	cursor: pointer;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none;   /* Chrome/Safari/Opera */
+	-khtml-user-select: none;    /* Konqueror */
+	-moz-user-select: none;      /* Firefox */
+	-ms-user-select: none;       /* Internet Explorer/Edge */
+	user-select: none;           /* Non-prefixed version, currently
+	                                  not supported by any browser */
+}
+header > section > div > p:hover {
+	color: #111;
+}
+header > section > div > p:active {
+	color: #000;
+   	font-weight: bold;
+}
+nav {
+	text-align: center;
+	margin: 15px;
+}
+nav > a {
+	text-decoration: none;
+	color: black;
+	margin: 0 10px;
+	font-size: 14pt;
+}
+nav > a:hover {
+	color: black;
+}
+
+header > section > div + div > div > div > div {
+	margin-bottom: 6px;
+}
+.register > button {
+	width: 100%;
+}
+.register {
+	display: none;
+}

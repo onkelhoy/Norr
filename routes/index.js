@@ -24,7 +24,7 @@
 		res.redirect('/home');
 	});
 	routes.get('*', function(req, res){
-		res.render('defualt', {
+		res.render('clean', {
 			type: 'bad',
 			title: '404 - page not found'
 		});

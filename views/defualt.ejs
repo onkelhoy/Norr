@@ -1,15 +1,15 @@
 <html>
 <head>
 	<% include partials/ejs/head.ejs %>
-	<link rel="stylesheet" href="css/basic.css">
-	<link rel="stylesheet" href="css/popup.css">
 </head>
 <body id="main">
-	<% if(type == 'login') { %>
-		<% include partials/html/login.html %>
+	<% include partials/ejs/header.ejs %>
+
+	<% if(type == 'home') { %>
+		<% include partials/ejs/home.ejs %>
 	<% } %>
-	<% if(type == 'bad') { %>
-		<% include partials/html/bad.html %>
+	<% if(type == 'products') { %>
+		<% include partials/ejs/products.ejs %>
 	<% } %>
 </body>
 </html>
