@@ -5,10 +5,11 @@
 
     var home = require('./home');
     var admin = require('./admin');
-    var login = require('./login');
+    var product = require('./product');
 	
 	routes.use('/home', home);
 	routes.use('/admin', admin);
+	routes.use('/product', product);
 
 
 	routes.get('/logout', function(req, res){

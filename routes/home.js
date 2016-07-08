@@ -20,12 +20,11 @@
                 });
             }
             else {
-                console.log(err);
                 
                 res.render('clean', {
                     type: 'error',
-                    title: 'Error 601', //sql error
-                    msg: 'Database error, loading products'
+                    title: 'Error 603',
+                    msg: 'Error loading layout'
                 });
             }
         });
@@ -36,16 +35,14 @@
         var category = req.params.cat;
         var sess = req.session;
 
-        if(filter.text(category))
+        if(filter.text(category)) {
             var command = "SELECT * FROM `product` WHERE `category` = '"+category+"'";
             sql.query(command, function(err, rows){
                 if(err) {
-                    console.log(err);
-                    
                     res.render('clean', {
                         type: 'error',
-                        title: 'Error 603',
-                        msg: 'Error loading layout'
+                        title: 'Error 601', //sql error
+                        msg: 'Database error, loading products'
                     });
                 }
                 else {
@@ -57,11 +54,17 @@
                     });
                 }
             });
-        
+        } else {
+            res.render('clean', {
+                type: 'error',
+                title: 'Error 605', //sql error
+                msg: 'invalid parameter'
+            });
+        }
     });
 
     routes.post('/heart/:id', function(req, res){
-        
+
     });
     
     module.exports = routes;

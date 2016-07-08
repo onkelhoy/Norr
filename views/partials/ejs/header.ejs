@@ -47,9 +47,10 @@
 	<h1 id="logo"><a href="/home">NORR</a></h1>
 
 	<nav>
+		<!-- displaying the categories -->
+		
 		<% for(var i = 0; i < categories.length; i++) { %>
-
-			<!-- displaying the categories -->
+			
 			<a href="/home/<%- categories[i].name %>"><%- categories[i].name %></a>
 
 		<% } %>

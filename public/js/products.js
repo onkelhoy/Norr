@@ -13,8 +13,9 @@ $(document).ready(function(){
 		li.append($('<button></button>')
 			.addClass('btn heartBtn')
 			.attr('type', 'button')
+			.attr('index', products[i].id)
 			.click(function(){
-				heartItem(products[i].id);
+				heartItem($(this).attr('index'));
 			}).append($('<i></i>').addClass('fa fa-heart')));
 
 		li.append(a);
@@ -24,4 +25,5 @@ $(document).ready(function(){
 
 function heartItem(id){
 	// $.post()
+	console.log(id);
 }

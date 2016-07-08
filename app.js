@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.use('/', routes);
 
+require('./routes/helpers/start')();
+
 app.listen(3000, function(){
 	console.log("Running on *3000");
 });

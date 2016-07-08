@@ -26,7 +26,6 @@ exports.renderCategories = function(res, data){
 
 
 
-
 // functions
 function query(command, callback) {
 	var sql = conn.getConnection();
