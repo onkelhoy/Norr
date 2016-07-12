@@ -88,6 +88,9 @@ header > section > div > p {
 	user-select: none;           /* Non-prefixed version, currently
 	                                  not supported by any browser */
 }
+header > section {
+	z-index: 10;
+}
 header > section > div > p:hover {
 	color: #111;
 }

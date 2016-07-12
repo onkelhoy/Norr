@@ -3,13 +3,11 @@
     var express = require('express');
     var routes = express.Router();
 
-    var home = require('./home');
-    var admin = require('./admin');
-    var product = require('./product');
-	
-	routes.use('/home', home);
-	routes.use('/admin', admin);
-	routes.use('/product', product);
+
+	routes.use('/home', require('./home'));
+	routes.use('/admin', require('./admin'));
+	routes.use('/product', require('./product'));
+	routes.use('/login', require('./login'));
 
 
 	routes.get('/logout', function(req, res){
