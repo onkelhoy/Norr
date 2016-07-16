@@ -1,0 +1,40 @@
+<html>
+	<head>
+		<% include partials/ejs/head.ejs %>
+		<link rel="stylesheet" href="css/admin.css">
+		
+		<script src="js/admin.js"></script>
+	</head>
+	<body>	
+		<header class="container-fluid">
+			<h1>NORR</h1>
+			<nav>
+				<ul>
+					<li><a href="/admin/orders">ORDERS</a></li>
+					<li><a href="/admin/homepage">HOMEPAGE</a></li>
+					<li><a href="/admin/products">PRODUCTS</a></li>
+					<li><a href="/admin/users">USERS</a></li>
+				</ul>
+			</nav>
+		</header>
+		<div class="container">
+			<div class="row">
+				<% if(typeof(type) == 'undefined') { %>
+					<h3>HEJ <%= username.name.toUpperCase() %></h3>
+				<% } else if(content.type == 'homepage') { %>
+					
+
+				<% } else if(content.type == 'products') { %>
+					<p>products</p>
+
+				<% } else if(content.type == 'users') { %>
+					<p>users</p>
+
+				<% } else { %>
+					<!-- orders -->
+					<p>orders</p>
+				<% } %>
+			</div>
+		</div>
+	</body>	
+</html>

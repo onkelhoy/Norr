@@ -34,3 +34,16 @@ $(document).ready(function() {
 	});
 
 });
+
+function search() {
+	var value = $('#search').val();
+	if(value != '') {
+		$.post('search', {
+			value: value
+		}, function(data){
+
+		}).fail(function(err){
+
+		});
+	}
+}

@@ -15,9 +15,8 @@
             var command = "SELECT * FROM `product` WHERE `id` = '"+id+"'";
             sql.query(command, function(err, rows){
                 if(!err) {
-					sql.renderCategories(res, {
+					sql.renderCategories(req, res, {
 			            type: 'product',
-			            id: id,
 			            title: 'Norr',
 			            product: rows,
 			        	heartList: sess.heartList

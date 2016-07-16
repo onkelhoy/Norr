@@ -7,10 +7,11 @@ exports.query = function(command, callback) {
 exports.getCategories = function(callback){
 	getCategories(callback);
 }
-exports.renderCategories = function(res, data){
+exports.renderCategories = function(req, res, data){
 	getCategories(
 		function(err, categories){
 			if(!err) {
+				data.username = req.session.username;
 				data.categories = categories;
                 res.render('defualt', data);
 			} else {
@@ -42,7 +43,7 @@ function query(command, callback) {
 }
 
 function getCategories(callback){
-	var command = "SELECT `name` FROM `category` WHERE `parent` IS NULL";
+	var command = "SELECT * FROM `category`"; //"SELECT `name` FROM `category` WHERE `parent` IS NULL";
 	query(command, function(err, rows){
 	    if(err && callback !== undefined) callback(err, null);
 	    else {

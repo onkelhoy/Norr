@@ -13,7 +13,6 @@
 		var mail = req.body.mail,
 			password = req.body.pass;
 
-		console.log('server: ', mail, password);
 		if(filter.mail(mail) && filter.text(password)){
 			var command = "SELECT * FROM `user` WHERE `mail` = '"+mail+"'";
 			sql.query(command, function(err, rows){
@@ -22,14 +21,10 @@
 					if(rows[0] !== undefined) {
 						if(crypte.isSame(rows[0].pass, password)){
 							//allt e som de ska
-							sess.login = true;
-							sess.email = mail;
-							sess.admin = rows[0].admin == 1;
+							sess.username = rows[0];
 
 							if(sess.admin) res.status(200).send({login: true, admin: true});
 							else res.status(200).send({login: true, admin: false});
-
-							console.log('logged in as: ' + mail);
 						}
 						else res.status(500).send({error: 'Username or password do not match'});
 					} else {
@@ -91,6 +86,10 @@
                 title: 'Error 605', //sql error
                 msg: 'invalid parameter'
             });
+	});
+	routes.get('logout', function(req, res) {
+		res.session.username = undefined;
+		res.redirect('/home');
 	});
 
 	function deleteAccount(id){

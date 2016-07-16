@@ -1,10 +1,40 @@
-<script> var products = <%- JSON.stringify(products) %>; </script>
+<script> var product = <%- JSON.stringify(product[0]) %>; </script>
 <script src="js/product.js"></script>
+<link rel="stylesheet" href="css/product.css" />
+
+<% include sidebar.ejs %>
+
 
 <div class="container">
 	<div id="box" class="row">
+		<div class='slider'>
+			<div class="slide-container col-sm-6 col-md-4 col-xs-8 col-xs-offset-2 col-sm-offset-1" index="0" count="0" loaded="0">
+				<div class="slide-controller right">
+					<button onclick="controll(1)"><i class="fa fa-caret-right fa-4x"></i></button>
+				</div>
+				<div class="slide-controller left">
+					<button onclick="controll(-1)"><i class="fa fa-caret-left fa-4x"></i></button>
+				</div>
+				<div class="slide-circles"></div>
+				<div class="slide"></div>
+				<div class="slide-thumbnails"></div>
+			</div>
+		</div>
+
+
+		<h1><%= product[0].name %></h1>
+		<p><%= product[0].info %></p>
 		
-		
+		<div>
+			<% if(product[0].stock > 0) { %>
+
+			<% } else { %>
+
+			<% } %>
+		</div>
+
+
+		<button class="btn btn-success" type="button" onclick="basket()"><i class="fa fa-plus"></i> LÄGG TILL I VARUKORG</button>
 
 	</div>
 </div>

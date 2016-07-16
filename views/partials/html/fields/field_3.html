@@ -1,20 +1,26 @@
-<div class="field field-l"> <!-- 3-way -->
-
-	<div class="hidden-xs">
-		<div class="col-sm-4">
-			<div class="half">
-				<div class="body"></div>
-			</div>
-			<div class="half">
-				<div class="mid body"></div>
-				<div class="mid body"></div>
+<html>
+	<head>
+		<% include partials/ejs/head.ejs %>
+		<link rel="stylesheet" href="css/admin.css">
+		
+		<script src="js/admin.js"></script>
+	</head>
+	<body>	
+		<header>
+			<nav>
+				<h2>NORR</h2>
+				<ul>
+					<li>ORDERS</li>
+					<li>PRODUCTS</li>
+					<li>USERS</li>
+				</ul>
+			</nav>
+		</header>
+		<div class="container">
+			<div class="row">
+				<h3>HEJ <%= username.name %></h3>
+				
 			</div>
 		</div>
-		<div class="col-sm-4 body"></div>
-		<div class="col-sm-4 body"></div>
-	</div>
-
-	<div class="hidden-lg hidden-md hidden-sm">
-
-	</div>
-</div>
+	</body>	
+</html>

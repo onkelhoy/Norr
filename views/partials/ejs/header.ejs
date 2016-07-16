@@ -7,8 +7,9 @@
 	<section>
 		<div><p>VARUKORG <span id="varukorgCount">0</span></p></div>
 		<div>
+			<% if(typeof username == "undefined") { %>
+
 			<p><span>LOGGA IN</span> <i id="loginpin" style="display: none;" class="fa fa-thumb-tack"></i></p>
-			
 			<div>
 				<div class="login" onkeypress="enterpress(event)">
 					<div class="input-group">
@@ -38,11 +39,19 @@
 					</div>
 	      			<button class="btn btn-info" type="button" onclick="register()">register</button>
 				</div>
-				
-				
 				<p class="wall bg-danger" id="error"></p>
 				<a href="javascript:void(0)" id="changeLogin">Ej medlem?</a>
 			</div>
+			<% } else { %>
+				<% if(username.admin == 0) { %>
+					<p><a href="/user"><%= username.mail.split('@')[0] %></a></p>
+				<% } else { %>
+					<p><a href="/admin"><%= username.name %></a></p>
+				<% } %>
+				<p><a href="/logout">LOGGA UT</a></p>
+			<% } %>
+
+
 		</div>
 	</section>
 
@@ -53,15 +62,17 @@
 		
 		<% for(var i = 0; i < categories.length; i++) { %>
 			
-			<a href="/home/<%- categories[i].name %>"><%- categories[i].name %></a>
-
+			<% if(categories[i].parent == null) { %>
+				<a href="/home/<%- categories[i].name %>"><%- categories[i].name %></a>
+			<% } %>
+			
 		<% } %>
 	</nav>
 	
 	<div class="col-sm-4 col-sm-offset-4">
 		<div id="custom-search-input">
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="SÖK" />
+				<input onkeyup="search()" id="search" type="text" class="form-control" placeholder="SÖK" />
 				<span class="input-group-btn">
 					<button class="btn btn-info" type="button" onclick="search()">
 	                	<i class="glyphicon glyphicon-search"></i>

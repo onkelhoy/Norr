@@ -13,7 +13,7 @@
 
         jsonfile.readFile(__dirname + '/content/layout.json', function(err, obj){
             if(!err){
-                sql.renderCategories(res, {
+                sql.renderCategories(req, res, {
                     layout: obj,
                     type: 'home',
                     title: 'Norr'
@@ -36,7 +36,7 @@
         var sess = req.session;
 
         if(filter.text(category)) {
-            var command = "SELECT * FROM `product` WHERE `category` = '"+category+"'";
+            var command = 'SELECT * FROM product WHERE product.category IN (SELECT name FROM category WHERE name = "'+category+'" OR superParent = "'+category+'" OR parent = "'+category+'")';
             sql.query(command, function(err, rows){
                 if(err) {
                     res.render('clean', {
@@ -46,7 +46,7 @@
                     });
                 }
                 else {
-                    sql.renderCategories(res, {
+                    sql.renderCategories(req, res, {
                         type: 'products',
                         title: 'Norr',
                         products: rows,

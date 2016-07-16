@@ -1,9 +1,21 @@
-<script> var products = <%- JSON.stringify(products) %>; </script>
-<script src="js/products.js"></script>
+<% include sidebar.ejs %>
 
 <div class="container">
 	<div class="row">
-		<ul class="products"></ul>
+		<ul class="products">
 
+			<% for(var i = 0; i < products.length; i++) { %>
+			<li class="col-md-3 col-md-4">
+				<a href="/product/<%= products[i].id %>">
+					<img src="<%- products[i].images.split(',')[0] %>" alt="<%= products[i].name %>#0">
+					<h3><%= products[i].name %></h3>
+					<button class="btn heartBtn" onclick="heartItem(<%= products[0].id %>)">
+						<i class="fa fa-heart"></i>
+					</button>
+				</a>
+			</li>
+			<% } %>
+
+		</ul>
 	</div>
 </div>
