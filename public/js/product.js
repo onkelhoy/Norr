@@ -80,11 +80,11 @@ function animate(index, side) {
 	fa.eq(index).addClass('slide-selected');
 
 	var thumbnail = $('.slide-thumbnails').children('span');
-	$('.slide-thumbnail-select').removeClass('slide-thumbnail-select');
+	$('.slide-thumbnail-select').removeClass('slide-thumbnail-select');	
 	thumbnail.eq(index).addClass('slide-thumbnail-select');
 
 	if(index <= 0) $('.left').hide();
 	else $('.left').show();
-	if(index >= 2) $('.right').hide();
+	if(index >= count-1) $('.right').hide();
 	else $('.right').show();
 }

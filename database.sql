@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `mail` varchar(500) NOT NULL,
   `name` varchar(200) NOT NULL,
   `adress` varchar(200) NOT NULL,
-  `date` varchar(100) NOT NULL
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `product` (
@@ -22,12 +22,12 @@ CREATE TABLE IF NOT EXISTS `product` (
   `category` varchar(100) NOT NULL,
   `price` int(11) NOT NULL DEFAULT '0',
   `images` text NOT NULL,
-  `info` varchar(2000) NOT NULL,
+  `info` text NOT NULL,
   `stock` int(11) NOT NULL DEFAULT '0',
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rea` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `name` varchar(50) NOT NULL,
@@ -53,8 +53,8 @@ INSERT INTO `category` (`child`,`parent`,`id`,`name`,`superParent`) VALUES (NULL
 
 
 
-INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('svart byxa','BYXOR',199,'http://riverisland.scene7.com/is/image/RiverIsland/274519_main?$CrossSellProductPage514$,http://riverisland.scene7.com/is/image/RiverIsland/671762_main?$CrossSellProductPage514$,https://cdn.nudiejeans.com/img/Long-John-Black-Black-111199-01_800x800.jpg','detta är en svart byxa',17,1,149);
+INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('svart byxa','BYXOR',199,'http://riverisland.scene7.com/is/image/RiverIsland/274519_main?$CrossSellProductPage514$,http://riverisland.scene7.com/is/image/RiverIsland/671762_main?$CrossSellProductPage514$,https://cdn.nudiejeans.com/img/Long-John-Black-Black-111199-01_800x800.jpg,http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=164030947','detta är en svart byxa',17,1,149);
 INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('blå byxa','BYXOR',199,'','Detta är fina blåa byxor',19,2,139);
-INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('KALLES BYXOR','LÅNGBYXOR',400,'','',12,3,0);
+INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('bajs','BAJS BYXOR',12,'http://i.imgur.com/DdRLdTY.jpg,http://i.imgur.com/QsVosje.jpg','blabla',1,19,2);
 
-INSERT INTO `user` (`name`,`mail`,`pass`,`orders`,`admin`,`id`,`registerd`) VALUES ('','onkelhoy@gmail.com','#jk#nO#iJjknOo,jknOo,KAnOo,KApro,cba','',0,17,1);
+INSERT INTO `user` (`name`,`mail`,`pass`,`orders`,`admin`,`id`,`registerd`) VALUES ('Henry','onkelhoy@gmail.com','#jk#nO#iJjknOo,jknOo,KAnOo,KApro,cba','',1,17,1);

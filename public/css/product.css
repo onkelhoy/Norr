@@ -62,7 +62,7 @@
 	width: 100%;
 	height: 100%;
 	text-align: center;
-	padding: 10px;
+	/*box-sizing: border-box;*/
 	display: inline-block;
 }
 .slide > div > img {
@@ -70,6 +70,8 @@
 	height: 90%;
 	z-index: 0;
 	margin: auto;
+	max-width: 100%; 
+	padding: 10px;
 }
 .slide > div > div {
 	position: absolute;

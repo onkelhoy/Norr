@@ -10,31 +10,25 @@
 			<h1>NORR</h1>
 			<nav>
 				<ul>
-					<li><a href="/admin/orders">ORDERS</a></li>
-					<li><a href="/admin/homepage">HOMEPAGE</a></li>
-					<li><a href="/admin/products">PRODUCTS</a></li>
-					<li><a href="/admin/users">USERS</a></li>
+					<li><a href="orders">ORDERS</a></li>
+					<li><a href="product">PRODUCTS</a></li>
+					<li><a href="users">USERS</a></li>
+					<li><a href="layout">HOMEPAGE</a></li>
 				</ul>
 			</nav>
 		</header>
 		<div class="container">
-			<div class="row">
-				<% if(typeof(type) == 'undefined') { %>
+				<% if(typeof(content) == 'undefined') { %>
 					<h3>HEJ <%= username.name.toUpperCase() %></h3>
 				<% } else if(content.type == 'homepage') { %>
-					
-
+					<% include partials/ejs/admin/layout.ejs %>
 				<% } else if(content.type == 'products') { %>
-					<p>products</p>
-
+					<% include partials/ejs/admin/product.ejs %>
 				<% } else if(content.type == 'users') { %>
-					<p>users</p>
-
-				<% } else { %>
-					<!-- orders -->
-					<p>orders</p>
+					<% include partials/ejs/admin/users.ejs %>
+				<% } else if(content.type == 'orders') { %>
+					<% include partials/ejs/admin/orders.ejs %>
 				<% } %>
-			</div>
 		</div>
 	</body>	
 </html>
