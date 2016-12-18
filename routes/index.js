@@ -4,7 +4,6 @@
     var routes = express.Router();
 
 
-	routes.use('/home', require('./home'));
 	routes.use('/admin', require('./admin'));
 	routes.use('/product', require('./product'));
 	routes.use('/login', require('./login'));
@@ -19,9 +18,8 @@
 		res.send('we are having some problems with database right now');
 	});
 
-	routes.get('/', function(req, res){
-		res.redirect('/home');
-	});
+
+	routes.use('/', require('./home'));
 	routes.get('*', function(req, res){
 		res.render('clean', {
 			type: 'bad',

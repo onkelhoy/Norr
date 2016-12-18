@@ -47,6 +47,16 @@
 .field .body > a {
 	height: 100%;
 	width: 100%;
+	overflow: hidden;
+
+		text-align: center;
+		position: relative;
+		z-index: 5;
+}
+
+.field .body > a > img {
+	z-index: 0;
+	position: relative;
 }
 
 /*playaround*/

@@ -12,7 +12,7 @@ function createField(field){
 
 		var div = $('<div></div>').addClass(field.fields[i].class);
 		generateChildren(field.fields[i], div);
-		
+
 		box.append(div);
 	}
 
@@ -45,9 +45,19 @@ function createFieldContent(field){
 	var ahref = $('<a></a>').attr('href', field.link)
 		.css({'display': 'block', 'background-color': field.color});
 
+	var img = $('<img>').attr('src', field.image);
+	img.attr('arc', field.header);
+	img.load(function(){
+		var img = $(this);
+		if((img.width()-100) > img.height()){
+			$(this).css('height', '100%');
+		}
+		else{
+			 $(this).css('width', '100%');
+		 }
+	});
 
-	ahref.append($('<img>').attr('src', field.image)
-		.attr('arc', field.header));
+	ahref.append(img);
 	ahref.append($('<h3></h3>').text(field.header));
 	ahref.append($('<p></p>').text(field.caption));
 

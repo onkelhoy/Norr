@@ -10,6 +10,7 @@
     routes.use('/users', require('./admin/users'));
     routes.use('/layout', require('./admin/layout'));
     routes.use('/orders', require('./admin/orders'));
+    routes.use('/categories', require('./admin/categories'));
 
     routes.use('/', express.static('public'));
 
@@ -36,7 +37,7 @@
 
         if(filter.text(from) && filter.text(from) && filter.num(limit) && filter.num(offset)) {
             var command = "SELECT * FROM " + from + " ORDER BY " + order + " LIMIT " + limit + " OFFSET " + offset;
-            
+
             sql.query(command, function(err, rows) {
                 if(err) res.status(500).send('database errors');
                 else res.status(200).send(rows);
@@ -50,15 +51,8 @@
         if(sess.username && sess.username.admin == 1){
             callback(sess);
         }
-        else res.redirect('/home');
+        else res.redirect('/');
     }
-
-    routes.get('/categories', function(req, res){
-        sql.query('SELECT * FROM category', function(err, rows){
-            if(err) res.status(404).send('database error');
-            else res.status(200).json(rows);
-        });
-    });
 
     exports.check = function(req, res, callback){
         check(req, res, callback);

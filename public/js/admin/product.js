@@ -1,7 +1,7 @@
 var categories = [];
 var productCount = 0;
 
-$.get('/admin/categories', function(data){
+$.get('/admin/categories/c', function(data){
 	categories = data;
 }).fail(function(err){
 	console.log(err);
@@ -65,6 +65,20 @@ $(document).ready(function(){
 			$('table').attr('order', $(this).attr('type'));
 		}
 
+	});
+
+	$('#newCategory').click(function() {
+		if($(this).children('span').text() == 'NY KATEGORI') {
+			$(this).children('span').text('DÖLJ');
+			$(this).children('i').removeClass('fa-plus');
+			$(this).children('i').addClass('fa-minus');
+		} else {
+			$(this).children('span').text('NY KATEGORI');
+			$(this).children('i').removeClass('fa-minus');
+			$(this).children('i').addClass('fa-plus');
+		}
+
+		$(this).next().toggle();
 	});
 });
 
@@ -152,24 +166,24 @@ function del(elm){
 }
 function save(elm){
 	var tr = elm.parent();
-	var id = tr.attr('id');
 
 	var data = {
-		name: ,
-		category: ,
-		price: Number(),
-		stock: Number(),
-		rea: Number($('#rea').val()),
-		info: $('#info').val(),
+		id: tr.attr('id'),
+		name: tr.children().eq(1).text(),
+		category: tr.children().eq(2).children('select').val(),
+		info: tr.children().eq(3).text(),
+		price: tr.children().eq(4).text(),
+		rea: tr.children().eq(5).text(),
+		stock: tr.children().eq(6).text(),
 		images: "" //will not be saved
 	};
 
 	$.ajax({
 		method: 'PUT',
-		url: '/',
-		data: data
+		url: '/admin/product/',
+		data: {data:data}
 	}).done(function(msg) {
-
+		showSuccess('Successfull updatering av produkt');
 	}).fail(function(err){
 		showError(err.responseText);
 	});

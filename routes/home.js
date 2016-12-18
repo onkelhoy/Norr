@@ -20,7 +20,7 @@
                 });
             }
             else {
-                
+
                 res.render('clean', {
                     type: 'error',
                     title: 'Error 603',
@@ -66,6 +66,6 @@
     routes.post('/heart/:id', function(req, res){
 
     });
-    
+
     module.exports = routes;
 }());

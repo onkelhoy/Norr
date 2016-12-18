@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="css/admin/categories.css" >
+<script src="js/admin/categories.js"></script>
+
+<ul id="categoriesList"></ul>
+<div id=popup-container>
+  <div id="popup">
+    <div class="panel panel-danger">
+      <div class="panel-heading">Force Delete</div>
+      <div class="panel-body">
+        <p id='forceDeleteMSG'></p>
+        <div class="input-group">
+          <span class="input-group-addon">Name of Category</span>
+          <input class="form-control" type="text" name="forceDelete" value="" id="forceDelete">
+        </div>
+        <br>
+        <button type="button" name="button" class="btn btn-primary" id="forceConfirm">Confirm</button>
+        <button type="button" name="button" class="btn btn-danger" onclick="hidePopup()">Cancle</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@ $(document).ready(function(){
 	var position = [];
 
 	loop();
-	
+
 
 
 	function add(pos, text, arr, current) {
@@ -23,8 +23,8 @@ $(document).ready(function(){
 			current++;
 			add(pos, text, arr[pos[current]].arr, current);
 		}
-		
-	} 
+
+	}
 
 	function loop() {
 		for(var i = 0; i < categories.length; i++) {
@@ -60,7 +60,7 @@ $(document).ready(function(){
 	function printout(ul, arr) {
 		for(var i = 0; i < arr.length; i++){
 			var li = $('<li></li>');
-			li.append($('<a></a>').attr('href', '/home/' + arr[i].text).text(arr[i].text));
+			li.append($('<a></a>').attr('href', '/' + arr[i].text).text(arr[i].text));
 
 			if(arr[i].arr.length > 0) {
 				li.append(printout($('<ul></ul>'), arr[i].arr));

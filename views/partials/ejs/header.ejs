@@ -6,7 +6,11 @@
 <header class="container-fluid">
 	<section>
 		<div><p>VARUKORG <span id="varukorgCount">0</span></p></div>
-		<div>
+		<% if(typeof username == "undefined") { %>
+			<div class="loginfield">
+		<% } else { %>
+			<div class="namefield">
+		<% } %>
 			<% if(typeof username == "undefined") { %>
 
 			<p><span>LOGGA IN</span> <i id="loginpin" style="display: none;" class="fa fa-thumb-tack"></i></p>
@@ -44,31 +48,31 @@
 			</div>
 			<% } else { %>
 				<% if(username.admin == 0) { %>
-					<p><a href="/user"><%= username.mail.split('@')[0] %></a></p>
+					<span><a href="/user"><%= username.mail.split('@')[0] %></a></span>
 				<% } else { %>
-					<p><a href="/admin"><%= username.name %></a></p>
+					<span><a href="/admin"><%= username.name %></a></span>
 				<% } %>
-				<p><a href="/logout">LOGGA UT</a></p>
+				<span><a href="/logout">LOGGA UT</a></span>
 			<% } %>
 
 
 		</div>
 	</section>
 
-	<h1 id="logo"><a href="/home">NORR</a></h1>
+	<h1 id="logo"><a href="/">NORR</a></h1>
 
 	<nav>
 		<!-- displaying the categories -->
-		
+
 		<% for(var i = 0; i < categories.length; i++) { %>
-			
+
 			<% if(categories[i].parent == null) { %>
-				<a href="/home/<%- categories[i].name %>"><%- categories[i].name %></a>
+				<a href="/<%- categories[i].name %>"><%- categories[i].name %></a>
 			<% } %>
-			
+
 		<% } %>
 	</nav>
-	
+
 	<div class="col-sm-4 col-sm-offset-4">
 		<div id="custom-search-input">
 			<div class="input-group">
@@ -86,5 +90,5 @@
 </header>
 
 <section id="varukorg">
-	
+
 </section>

@@ -2,18 +2,20 @@
 	<head>
 		<% include partials/ejs/head.ejs %>
 		<link rel="stylesheet" href="css/admin.css">
-		
+
 		<script src="js/admin.js"></script>
 	</head>
-	<body>	
+	<body>
 		<header class="container-fluid">
 			<h1>NORR</h1>
 			<nav>
 				<ul>
-					<li><a href="orders">ORDERS</a></li>
-					<li><a href="product">PRODUCTS</a></li>
-					<li><a href="users">USERS</a></li>
-					<li><a href="layout">HOMEPAGE</a></li>
+					<li><a href="/">HOME</a></li>
+					<li><a href="/admin/orders">ORDERS</a></li>
+					<li><a href="/admin/product">PRODUCTS</a></li>
+					<li><a href="/admin/categories">CATEGORIES</a></li>
+					<li><a href="/admin/users">USERS</a></li>
+					<li><a href="/admin/layout">LAYOUT</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -28,7 +30,9 @@
 					<% include partials/ejs/admin/users.ejs %>
 				<% } else if(content.type == 'orders') { %>
 					<% include partials/ejs/admin/orders.ejs %>
+				<% } else if(content.type == 'category') { %>
+					<% include partials/ejs/admin/category.ejs %>
 				<% } %>
 		</div>
-	</body>	
+	</body>
 </html>

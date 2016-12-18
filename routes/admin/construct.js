@@ -1,40 +1,32 @@
 var sql = require('../helpers/sql');
-var filter = require('../helpers/filter');
 var admin = require('../admin');
 
-function check(data) {
-    return filter.text(data.name) && filter.text(data.category) &&
-            filter.link(data.images) && filter.text(data.info) && 
-            filter.num(data.rea) && filter.num(data.price) &&
-            filter.num(data.stock);
-}
 
 function put(req, res, callback) {
     admin.check(req, res, function(sess) {
         var data = req.body.data;
         if(data != undefined) {
-            // now call the run function to query 
-            callback(check(data) && filter.num(data.id), data);
+            // now call the run function to query
+            callback(data);
         } else res.status(204).send('no content');
     });
 }
 function delet(req, res, callback) {
     admin.check(req, res, function(sess) {
-
         var id = req.body.id;
         if(id) {
-            callback(filter.num(id), {id: id});
+            callback({id: id});
 
         } else res.status(204).send('no id');
     });
 }
-function get(req, res, callback) {
+function get(req, res, callback) { // only assigned to product
     admin.check(req, res, function(sess) {
         var order = req.params.order,
             offset = req.params.offset;
         if(order != undefined && offset != undefined) {
-            callback(filter.text(order) && filter.num(offset), {offset: offset, order: order});
-            
+            callback({offset: offset, order: order});
+
         } else {
             res.status(204).send('no data');
         }
@@ -44,7 +36,7 @@ function post(req, res, callback) {
     admin.check(req, res, function(sess) {
         var data = req.body.data;
         if(data) {
-            callback(check(data) && filter.num(data.id), data);
+            callback(data);
         } else res.status(204).send('no content');
     });
 }

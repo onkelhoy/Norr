@@ -1,0 +1,25 @@
+ul#categoriesList {
+  list-style: none;
+  text-align: center;
+
+  margin-top: 5%;
+  /*min-width: 500px;*/
+}
+
+ul#categoriesList > li {
+  height: 4%;
+
+  position: relative;
+  margin: 2px 0;
+}
+
+ul#categoriesList > li > button {
+  display: inline-block;
+  width: 15%;
+  min-width: 80px;
+  height: 100%;
+}
+ul#categoriesList > li > span {
+  display: inline-block;
+  /*width: 70%;*/
+}
