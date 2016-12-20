@@ -1,14 +1,5 @@
-exports.stext = function(text) {
-	if(text.match(/[^\w\s\-\.\,]/)){ // not valid
-		return false;
-	}
-	else { // valid
-		return true;
-	}
-}
-
-exports.text = function(text) { //add in for special characters å,ä,ö.. etc
-	if(text.match(/[^\w\s\-\.\,åöäÖÅÄ?!]/)){ // not valid
+exports.text = function(text) {
+	if(text.match(/[^\w\s\-\.\,åöäÖÅÄ?!:/]/)){ // not valid
 		return false;
 	}
 	else { // valid
@@ -18,7 +9,7 @@ exports.text = function(text) { //add in for special characters å,ä,ö.. etc
 
 exports.num = function(num){
 	try{
-		var b = num * 2; 
+		var b = num * 2;
 		return true;
 	}
 	catch (e) {

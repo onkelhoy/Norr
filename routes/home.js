@@ -8,9 +8,9 @@
     var routes = express.Router();
 
     routes.use('/', express.static('public'));
+		routes.use('/heart', require('./helpers/heart'));
+
     routes.get('/', function(req, res){
-
-
         jsonfile.readFile(__dirname + '/content/layout.json', function(err, obj){
             if(!err){
                 sql.renderCategories(req, res, {
@@ -28,44 +28,45 @@
                 });
             }
         });
-
+	}).get('*', function(req, res){
+		res.render('clean', {
+			type: 'bad',
+			title: '404 - page not found'
+		});
 	});
 
-    routes.get('/:cat', function(req, res){
-        var category = req.params.cat;
-        var sess = req.session;
-
-        if(filter.text(category)) {
-            var command = 'SELECT * FROM product WHERE product.category IN (SELECT name FROM category WHERE name = "'+category+'" OR superParent = "'+category+'" OR parent = "'+category+'")';
-            sql.query(command, function(err, rows){
-                if(err) {
-                    res.render('clean', {
-                        type: 'error',
-                        title: 'Error 601', //sql error
-                        msg: 'Database error, loading products'
-                    });
-                }
-                else {
-                    sql.renderCategories(req, res, {
-                        type: 'products',
-                        title: 'Norr',
-                        products: rows,
-                        heartList: sess.heartList
-                    });
-                }
-            });
-        } else {
-            res.render('clean', {
-                type: 'error',
-                title: 'Error 605', //sql error
-                msg: 'invalid parameter'
-            });
-        }
-    });
-
-    routes.post('/heart/:id', function(req, res){
-
-    });
 
     module.exports = routes;
 }());
+
+
+
+
+/**
+routes.post('/heart/:id', function(req, res){
+	if(filter.num(req.params.id)){
+		if(req.session.heartList == undefined) req.session.heartList = [];
+		req.session.heartList.push(req.params.id);
+		res.status(200).send('added');
+	} else res.status(404).send('inalid id');
+}).delete('/heart/:id', function(req, res){
+	if(filter.num(req.params.id)){
+		if(req.session.heartList == undefined) res.status(404).send('no list detected');
+		else {
+			var found = false;
+			for(var i = 0; i < req.session.heartList.length; i++){
+				if(req.session.heartList[i] == req.params.id) {
+					found = true;
+					break;
+				}
+			}
+
+			if(found) res.status(200).send('removed');
+			else res.status(404).send('not found');
+		}
+	} else res.status(404).send('inalid id');
+}).get('/heartlist', function(req, res){
+	res.status(200).json(req.session.heartList);
+});
+
+*/

@@ -1,75 +1,38 @@
-<link href="css/headerDesign.css" rel="stylesheet">
+<link href="css/header.css" rel="stylesheet">
 <script src="js/header.js"></script>
 <script src="js/login.js"></script>
 
 
 <header class="container-fluid">
 	<section>
-		<div><p>VARUKORG <span id="varukorgCount">0</span></p></div>
+		<div><a href="#"><i class="fa fa-heart-o"></i></a></div>
+
+		<div><a href="javacript:void(0)">VARUKORG <span id="varukorgCount">0</span></a></div>
 		<% if(typeof username == "undefined") { %>
 			<div class="loginfield">
 		<% } else { %>
 			<div class="namefield">
 		<% } %>
 			<% if(typeof username == "undefined") { %>
-
-			<p><span>LOGGA IN</span> <i id="loginpin" style="display: none;" class="fa fa-thumb-tack"></i></p>
-			<div>
-				<div class="login" onkeypress="enterpress(event)">
-					<div class="input-group">
-	      				<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-						<input type="email" class="form-control" id="mail" placeholder="Enter Email">
-					</div>
-					<div class="input-group">
-	      				<span class="input-group-addon"><i class="fa fa-key"></i></span>
-						<input type="password" class="form-control" id="password" placeholder="Enter Password">
-	      				<span class="input-group-btn">
-	      					<button class="btn btn-success" type="button" onclick="login()">login</button>
-	      				</span>
-					</div>
-				</div>
-				<div class="register" onkeypress="enterpressReg(event)">
-					<div class="input-group">
-	      				<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-						<input type="email" class="form-control" id="reg_mail" placeholder="Enter Email">
-					</div>
-					<div class="input-group">
-	      				<span class="input-group-addon"><i class="fa fa-key"></i></span>
-						<input type="password" class="form-control" id="reg_password" placeholder="Enter Password">
-					</div>
-					<div class="input-group">
-	      				<span class="input-group-addon"><i class="fa fa-repeat"></i></span>
-						<input type="password" class="form-control" id="reg_repassword" placeholder="Repeat Password">
-					</div>
-	      			<button class="btn btn-info" type="button" onclick="register()">register</button>
-				</div>
-				<p class="wall bg-danger" id="error"></p>
-				<a href="javascript:void(0)" id="changeLogin">Ej medlem?</a>
-			</div>
+				<% include ../html/login.html %>
 			<% } else { %>
 				<% if(username.admin == 0) { %>
-					<span><a href="/user"><%= username.mail.split('@')[0] %></a></span>
+					<a href="/user"><%= username.mail.split('@')[0] %></a></span>
 				<% } else { %>
-					<span><a href="/admin"><%= username.name %></a></span>
+					<a href="/admin"><%= username.name %></a>
 				<% } %>
-				<span><a href="/logout">LOGGA UT</a></span>
+				  <a href="/logout">LOGGA UT</a>
 			<% } %>
-
-
 		</div>
 	</section>
 
 	<h1 id="logo"><a href="/">NORR</a></h1>
 
-	<nav>
-		<!-- displaying the categories -->
-
+	<nav><!-- displaying the categories -->
 		<% for(var i = 0; i < categories.length; i++) { %>
-
 			<% if(categories[i].parent == null) { %>
-				<a href="/<%- categories[i].name %>"><%- categories[i].name %></a>
+				<a href="/category/<%- categories[i].name %>"><%- categories[i].name %></a>
 			<% } %>
-
 		<% } %>
 	</nav>
 
@@ -78,14 +41,12 @@
 			<div class="input-group">
 				<input onkeyup="search()" id="search" type="text" class="form-control" placeholder="SÖK" />
 				<span class="input-group-btn">
-					<button class="btn btn-info" type="button" onclick="search()">
-	                	<i class="glyphicon glyphicon-search"></i>
-	                </button>
-	            </span>
-	        </div>
-    	</div>
+					<button class="btn btn-info" type="button" onclick="search()"><i class="glyphicon glyphicon-search"></i></button>
+	      </span>
+	    </div>
     </div>
-	<br><br>
+  </div>
+	<br/><br/>
 	<hr>
 </header>
 

@@ -7,6 +7,7 @@
 	routes.use('/admin', require('./admin'));
 	routes.use('/product', require('./product'));
 	routes.use('/login', require('./login'));
+	routes.use('/category', require('./category'));
 
 
 	routes.get('/logout', function(req, res){

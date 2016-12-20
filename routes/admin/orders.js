@@ -8,6 +8,7 @@
     routes.use('/', express.static('public'));
 
     routes.get('/', function(req, res){
+			
         res.render('admin', {
             username: sess.username,
             title: 'admin - '+sess.username.name,

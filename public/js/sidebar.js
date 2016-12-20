@@ -51,19 +51,37 @@ $(document).ready(function(){
 	}
 
 	function addElements(){
-		var ul = $('<ul></ul>');
+		var ul = $('<ul>');
 		printout(ul, elements);
 
+		printout($('#mobileNavbar'), elements, true);
+
 		$('.sidebar-wrapper').append(ul);
+
 	}
 
-	function printout(ul, arr) {
+	function printout(ul, arr, nav) {
 		for(var i = 0; i < arr.length; i++){
-			var li = $('<li></li>');
-			li.append($('<a></a>').attr('href', '/' + arr[i].text).text(arr[i].text));
+			var li = $('<li>');
+			li.append($('<a>').attr('href', '/category/' + arr[i].text).text(arr[i].text));
 
 			if(arr[i].arr.length > 0) {
-				li.append(printout($('<ul></ul>'), arr[i].arr));
+				var ul2 = $('<ul>');
+					if(nav) {
+						var a = li.children().eq(0);
+						a.append($('<i>').addClass('fa fa-caret')).click(function(){
+							var i = $(this).children().eq(0);
+							$(this).parent().children('ul').slideToggle();
+							if(i.hasClass('fa-rotate-90')){
+								i.removeClass('fa-rotate-90');
+							}
+							else {
+								i.addClass('fa-rotate-90');
+							}
+						});
+
+					}
+				li.append(printout($('<ul>'), arr[i].arr, nav));
 			}
 
 			ul.append(li);

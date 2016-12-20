@@ -10,26 +10,61 @@
     routes.use('/', express.static('public'));
 
     routes.get('/c', function(req, res){
+			if(construct.check(req)){
         sql.query('SELECT * FROM category', function(err, rows){
             if(err) res.status(404).send('database error');
             else res.status(200).json(rows);
         });
+			}else res.redirect('/');
     }).post('/', function(req, res) {
         //add category
+				if(construct.check(req)){
         construct.POST(req, res, function(data) {
-            var command = "INSERT INTO `category`(`name`, `parent`, `superparent`) VALUES ('"+data.name+"','"+data.parent+"','"+data.superparent+"')";
-            construct.RUN(check(data) && filter.num(data.id), command, res, 'post');
+            var command = "INSERT INTO `category`(`name`) VALUES ('"+data.name+"')";
+						if(data.parent) command = "INSERT INTO `category`(`name`, `parent`) VALUES ('"+data.name+"','"+data.parent+"')";
+						if(data.superparent) command = "INSERT INTO `category`(`name`, `parent`, `superparent`) VALUES ('"+data.name+"','"+data.parent+"','"+data.superparent+"')";
+
+            if(check(data)) {
+							sql.query(command, function(err, rows){
+								if(err) res.status(404).send('Database error');
+								else {
+									res.status(200).json(rows);}
+							});
+						} else {
+							res.status(404).send('invalid charactures');
+						}
         });
+			}else res.status(300).send('no permision');
 
     }).put('/', function(req, res) {
         //edit category
+				if(construct.check(req)){
         construct.PUT(req, res, function(data) {
-            var command = "UPDATE `category` SET `name`='"+data.name+"',`parent`='"+data.parent+"',`superparent`='"+data.superparent+"' WHERE id = '" + data.id + "'";
-            construct.RUN(check(data) && filter.num(data.id), command, res, 'put');
+					if(filter.text(data.name) && filter.num(data.id)){
+						var command = "update category set superParent='"+data.name+"' where superParent='"+data.old+"'";
+						sql.query(command, function(err, row){
+							if(err) res.status(404).send('Database error');
+							else {
+								command = "update category set parent='"+data.name+"' where parent='"+data.old+"'";
+								sql.query(command, function(err, row){
+									if(err) res.status(404).send('Database error');
+									else {
+										command = "update category, product set category.name='"+data.name+"',product.category='"+data.name+"' where product.category='"+data.old+"' and category.id="+data.id;
+										sql.query(command, function(err, rows){
+											if(err) console.log(err); //res.status(503).send('Database error');
+											else res.status(200).send('Successfully updated');
+										});
+									}
+								});
+							}
+						});
+					} else res.status(404).send('Invalid charactures');
         });
+			}else res.status(300).send('no permision');
 
     }).delete('/force', function(req, res) {
         //remove category
+				if(construct.check(req)){
         construct.DELETE(req, res, function(data) {
             var command = "DELETE category, product FROM category INNER JOIN product ON category.id = " + data.id + " and product.category = category.name";
             if(filter.num(data.id)){
@@ -42,13 +77,15 @@
 						}
 						else res.status(404).send('Invalid id');
         });
+			} else res.status(300).send('no permision');
 
     }).delete('/', function(req, res) {
         //remove category
+				if(construct.check(req)){
         construct.DELETE(req, res, function(data) {
 					data = req.body;
-            var command = "DELETE FROM `category` WHERE id = " + data.id + " and not exists(select name from product where product.category = '"+data.name+"')";
             if(filter.num(data.id)){
+	            var command = "DELETE FROM `category` WHERE id = " + data.id + " and not exists(select name from product where product.category = '"+data.name+"')";
 							sql.query(command, function(err, rows){
 								if(err){
 									res.status(404).send('Database error');
@@ -61,7 +98,8 @@
 						}
 						else res.status(404).send('Invalid id');
         });
-
+			}
+			else res.status(300).send('no permision');
     });
 
 		routes.get('/', function(req, res) {

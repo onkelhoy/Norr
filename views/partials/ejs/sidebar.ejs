@@ -2,6 +2,10 @@
 <script> var categories = <%- JSON.stringify(categories) %>; </script>
 <script src="js/sidebar.js"></script>
 
-<div class="sidebar-wrapper col-md-3 col-sm-4">
+<div class="sidebar-wrapper col-md-3 col-sm-4 hidden-xs">
 	<h3>KATEGORIER</h3>
 </div>
+
+<nav class="visible-xs">
+  <ul id="mobileNavbar"></ul>
+</nav><!-- /.container-fluid -->

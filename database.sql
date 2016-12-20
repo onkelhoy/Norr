@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `name` varchar(100) NOT NULL,
   `superParent` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `orders` (
   `products` text NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `rea` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `name` varchar(50) NOT NULL,
@@ -40,19 +40,19 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `mail` (`mail`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
-INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES (NULL,6,'T-SHIRT','');
-INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES (NULL,7,'HOODIE','');
-INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES (NULL,8,'BYXOR','');
-INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES (NULL,9,'KEPS','');
-INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES (NULL,10,'BAJS','');
-INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES (NULL,11,'APA','');
-INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES ('BYXOR',12,'LÅNGBYXOR','BYXOR');
-INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES ('BYXOR',13,'KORT BYXOR','BYXOR');
-INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES ('KORT BYXOR',14,'BAJS BYXOR','BYXOR');
+INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES (NULL,20,'a',NULL);
+INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES ('a',21,'a.2aaaaab','a');
+INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES ('a.2aaaaab',22,'a.3','a.2');
+INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES (NULL,23,'b',NULL);
+INSERT INTO `category` (`parent`,`id`,`name`,`superParent`) VALUES ('b',24,'b.2','b');
 
 
 
-INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('svart byxa','LÅNGBYXOR',100,'http://riverisland.scene7.com/is/image/RiverIsland/274519_main?$CrossSellProductPage514$,http://riverisland.scene7.com/is/image/RiverIsland/671762_main?$CrossSellProductPage514$,https://cdn.nudiejeans.com/img/Long-John-Black-Black-111199-01_800x800.jpg,http://www.polyvore.com/cgi/img-thing?.out=jpg&size=l&tid=164030947','oooh fuuuucking shitballz',16,1,10);
-INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('blå byxa','BYXOR',199,'','Detta är fina blåa byxor',19,2,139);
+INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('b2 product 1','b.2',0,'http://www.pacinno.eu/wp-content/uploads/2014/05/placeholder-Copy.png','',1,12,0);
+INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('a2 product 1','a.2aaaaab',0,'http://www.pacinno.eu/wp-content/uploads/2014/05/placeholder-Copy.png','',1,13,0);
+INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('a2 product 2','a.2aaaaab',0,'http://www.pacinno.eu/wp-content/uploads/2014/05/placeholder-Copy.png','',1,14,0);
+INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('a2 product 3','a.2aaaaab',0,'http://www.pacinno.eu/wp-content/uploads/2014/05/placeholder-Copy.png','',1,15,0);
+INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('a2 product 4','a.2aaaaab',0,'http://www.pacinno.eu/wp-content/uploads/2014/05/placeholder-Copy.png','',1,16,0);
+INSERT INTO `product` (`name`,`category`,`price`,`images`,`info`,`stock`,`id`,`rea`) VALUES ('a2 product 5','a.2aaaaab',0,'http://www.pacinno.eu/wp-content/uploads/2014/05/placeholder-Copy.png','',1,17,0);
 
 INSERT INTO `user` (`name`,`mail`,`pass`,`orders`,`admin`,`id`,`registerd`) VALUES ('Henry','onkelhoy@gmail.com','#jk#nO#iJjknOo,jknOo,KAnOo,KApro,cba','',1,17,1);

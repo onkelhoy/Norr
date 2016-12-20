@@ -1,7 +1,7 @@
 header {
 	position: relative;
 }
-	
+
 #custom-search-input{
     padding: 3px;
     border: solid 1px #E4E4E4;
@@ -56,57 +56,44 @@ header {
 	text-decoration: none;
 }
 
+
+/******* hearts, basket, login - field *************************************/
 header > section {
-	padding: 5px;
 	position: absolute;
 	right: 0;
-	width: 20%;
-	min-width: 200px;
-	max-width: 250px;
+	width: 30%;
+	min-width: 350px;
 }
+
+header > section > div {
+	position: relative;
+	width: 30%;
+
+	float: left;
+	text-align: right;
+}
+
+header > section > div:first-child > a {
+	color: red;
+
+	padding-right: 1px;
+}
+
 header > section > div > div {
-	width: 100%;
+	position: absolute;
+	left: -80px;
+	width: 200%;
+
+	max-width: 230px;
 	display: none;
 }
-header > section > div > section {
+
+.register {
+	display: none;
 }
 
-.namefield > p {
-	width: 50%;
-	padding: 0;
-	margin: 0;
-	width: 80px;
-}
-.namefield > p > a {
-	color: black;
-}
 
-header > section > div > p {
-	width: 50%;
-	float: left;
-	text-align: center;
-	color: #555;
-	/*margin: 0 5px;*/
-
-	cursor: pointer;
-	-webkit-touch-callout: none; /* iOS Safari */
-	-webkit-user-select: none;   /* Chrome/Safari/Opera */
-	-khtml-user-select: none;    /* Konqueror */
-	-moz-user-select: none;      /* Firefox */
-	-ms-user-select: none;       /* Internet Explorer/Edge */
-	user-select: none;           /* Non-prefixed version, currently
-	                                  not supported by any browser */
-}
-header > section {
-	z-index: 10;
-}
-header > section > div > p:hover {
-	color: #111;
-}
-header > section > div > p:active {
-	color: #000;
-   	font-weight: bold;
-}
+/******* navbar ********************/
 nav {
 	text-align: center;
 	margin: 15px;
@@ -119,14 +106,4 @@ nav > a {
 }
 nav > a:hover {
 	color: black;
-}
-
-header > section > div + div > div > div > div {
-	margin-bottom: 6px;
-}
-.register > button {
-	width: 100%;
-}
-.register {
-	display: none;
 }

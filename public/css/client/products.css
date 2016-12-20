@@ -1,0 +1,25 @@
+ul.products {
+  list-style: none;
+}
+
+ul.products > li {
+
+}
+
+ul.products > li > div {
+  width: 100%;
+  padding: 15px;
+}
+
+ul.products > li > div > a {
+
+}
+
+ul.products > li > div > a > img {
+  width: 100%;
+}
+
+ul.products > li > div > a + a {
+  font-size: 8pt;
+  color: #C24641;
+}

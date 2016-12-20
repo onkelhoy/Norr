@@ -8,7 +8,7 @@ function put(req, res, callback) {
         if(data != undefined) {
             // now call the run function to query
             callback(data);
-        } else res.status(204).send('no content');
+        } else res.status(404).send('no content');
     });
 }
 function delet(req, res, callback) {
@@ -28,7 +28,7 @@ function get(req, res, callback) { // only assigned to product
             callback({offset: offset, order: order});
 
         } else {
-            res.status(204).send('no data');
+            res.status(404).send('no data');
         }
     });
 }
@@ -37,7 +37,7 @@ function post(req, res, callback) {
         var data = req.body.data;
         if(data) {
             callback(data);
-        } else res.status(204).send('no content');
+        } else res.status(404).send('no content');
     });
 }
 
@@ -71,4 +71,8 @@ exports.POST = function(req, res, callback){
 }
 exports.DELETE = function(req, res, callback){
     delet(req, res, callback);
+}
+exports.check = function(req, callback){
+  var sess = req.session;
+  return sess.username && sess.username.admin == 1;
 }

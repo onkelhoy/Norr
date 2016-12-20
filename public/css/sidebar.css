@@ -1,3 +1,10 @@
+#mobileNavbar ul {
+	display: none;
+}
+
+.sidebar-wrapper {
+	height: 100%;
+}
 .sidebar-wrapper > h3 {
 	border-bottom: 1px solid #555;
 	text-align: center;
@@ -12,7 +19,7 @@
 .sidebar-wrapper li {
 	margin: 7px 0;
 }
-.sidebar-wrapper li:before { 
+.sidebar-wrapper li:before {
     content: "";
     border-color: transparent #111;
     border-style: solid;
