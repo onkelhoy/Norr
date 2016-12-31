@@ -22,7 +22,7 @@
 		<div class="container">
 				<% if(typeof(content) == 'undefined') { %>
 					<h3>HEJ <%= username.name.toUpperCase() %></h3>
-				<% } else if(content.type == 'homepage') { %>
+				<% } else if(content.type == 'layout') { %>
 					<% include partials/ejs/admin/layout.ejs %>
 				<% } else if(content.type == 'products') { %>
 					<% include partials/ejs/admin/product.ejs %>

@@ -23,8 +23,6 @@
 								if(i > 0) command += ' or ';
 								command += 'id = ' + list[i];
 							}
-
-							console.log(list);
 					  }
 						sql.query(command, function(err, rows){
                 if(err) {

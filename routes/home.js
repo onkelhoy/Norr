@@ -11,7 +11,7 @@
 		routes.use('/heart', require('./helpers/heart'));
 
     routes.get('/', function(req, res){
-        jsonfile.readFile(__dirname + '/content/layout.json', function(err, obj){
+        jsonfile.readFile(__dirname + '/content/layout.json', function(err, obj){ //readFileSync
             if(!err){
                 sql.renderCategories(req, res, {
                     layout: obj,
@@ -23,11 +23,21 @@
 
                 res.render('clean', {
                     type: 'error',
-                    title: 'Error 603',
+                    title: 'Error 500',
                     msg: 'Error loading layout'
                 });
             }
         });
+	}).post('/search', function(req, res){
+		var value = req.body.value;
+
+		if(filter.text(value)){
+			var command = 'select * from product where name like "%'+value+'%" OR category = "' + value+'"';
+			sql.query(command, function(err, rows){
+				if(err) res.status(404).send('database error');
+				else res.status(200).json(rows);
+			})
+		} else res.status(404).send('Invalid charactures');
 	}).get('*', function(req, res){
 		res.render('clean', {
 			type: 'bad',

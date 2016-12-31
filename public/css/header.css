@@ -62,7 +62,8 @@ header > section {
 	position: absolute;
 	right: 0;
 	width: 30%;
-	min-width: 350px;
+	min-width: 400px;
+	max-width: 450px;
 }
 
 header > section > div {
@@ -88,8 +89,32 @@ header > section > div > div {
 	display: none;
 }
 
+#searchResult > li > a {
+	display: block;
+	width: 100%;
+}
+
+
 .register {
 	display: none;
+}
+
+.badge1 {
+   position:relative;
+}
+.badge1[data-badge]:after {
+   content:attr(data-badge);
+   position:absolute;
+   top:-1px;
+   right:-20px;
+   font-size:.7em;
+   background:#CD55A2;
+   color:white;
+   width:18px;height:18px;
+   text-align:center;
+   line-height:18px;
+   border-radius:50%;
+   box-shadow:0 0 1px #333;
 }
 
 

@@ -5,7 +5,7 @@
 
 <header class="container-fluid">
 	<section>
-		<div><a href="#"><i class="fa fa-heart-o"></i></a></div>
+		<div><a href="#" class="badge1" data-badge="0"><i class="fa fa-heart-o"></i></a></div>
 
 		<div><a href="javacript:void(0)">VARUKORG <span id="varukorgCount">0</span></a></div>
 		<% if(typeof username == "undefined") { %>
@@ -36,7 +36,7 @@
 		<% } %>
 	</nav>
 
-	<div class="col-sm-4 col-sm-offset-4">
+	<div id="search_container" class="col-sm-4 col-sm-offset-4">
 		<div id="custom-search-input">
 			<div class="input-group">
 				<input onkeyup="search()" id="search" type="text" class="form-control" placeholder="SÖK" />
@@ -45,10 +45,11 @@
 	      </span>
 	    </div>
     </div>
+		<ul id="searchResult" class="list-group"></ul>
   </div>
-	<br/><br/>
-	<hr>
+
 </header>
+<hr>
 
 <section id="varukorg">
 

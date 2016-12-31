@@ -1,0 +1,9 @@
+<script src="js/admin/layout.js"></script>
+<link rel="stylesheet" href="css/client/fields.css">
+
+<div id="content"></div>
+<button type="button" name="button" onclick="save" class='btn btn-success sharp'>Spara</button>
+<script>
+  var layout = <%- JSON.stringify(content.layout) %>; // remove in home.ejs (.fields)
+  Generate(layout, true);
+</script>

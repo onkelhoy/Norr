@@ -38,9 +38,6 @@ function heartItem(elm){
 
     success: function(status){
 
-    },
-    error: function(err){
-
     }
   });
 }
